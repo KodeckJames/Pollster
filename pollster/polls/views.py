@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import Questions, Choices
 
-# Create your views here.
+# Get questions and display them
+def index(request):
+    return render(request, 'polls/index.html')
