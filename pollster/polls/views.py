@@ -30,7 +30,7 @@ def vote(request, question_id):
     # print(request.POST['choice'])
     question = get_object_or_404(Questions, pk=question_id)
     try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+        selected_choice = question.choices.get(pk=request.POST['choice'])
     except (KeyError, Choices.DoesNotExist):
         # Redisplay the question voting form.
         return render(request, 'polls/detail.html', {

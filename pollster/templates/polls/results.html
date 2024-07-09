@@ -2,13 +2,15 @@
 <h1 class="mb-5 text-center">{{ question.question_text }}</h1>
 
 <ul class="list-group mb-5">
-  {% for choice in question.choice_set.all %}
+  {% for choice in question.choices.all %}
   <li class="list-group-item">
     {{ choice.choice_text }}
-    <span class="badge badge-success float-right"
-      >{{ choice.votes }} vote{{ choice.votes | pluralize }}</span
-    >
+    <span class="badge badge-success float-right">
+      {{ choice.votes }} vote{{ choice.votes | pluralize }}
+    </span>
   </li>
+  {% empty %}
+  <li class="list-group-item">No choices available.</li>
   {% endfor %}
 </ul>
 
